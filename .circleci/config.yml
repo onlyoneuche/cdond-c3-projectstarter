@@ -108,9 +108,11 @@ workflows:
       - build-frontend
       - build-backend
       - test-frontend:
+          context: UdaPeople
           requires:
               - build-frontend
       - test-backend:
+          context: UdaPeople
           requires:
             - build-backend
       - scan-frontend:
@@ -118,6 +120,7 @@ workflows:
           requires:
             - test-frontend
       - scan-backend:
+          context: UdaPeople
           requires:
             - test-backend
 
