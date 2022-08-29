@@ -75,14 +75,17 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: [frontend-build]
+          keys: [scanfrontend-key]
       - run:
           name: Scan front-end
           command: |
             cd frontend
             npm install
-            npm audit fix --audit-level=critical --force      
+            #npm audit fix --audit-level=critical
             npm audit --audit-level=critical
+      - save_cache:
+          paths: [frontend/node_modules]
+          key: scanfrontend-key
       - slack/notify
 
   scan-backend:
@@ -91,14 +94,17 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: [backend-build]
+          keys: [scanbackend-key]
       - run:
           name: Back-end Scan
           command: |
             cd backend
             npm install
-            npm audit fix --audit-level=critical --force
-            npm audit fix --audit-level=critical --force
+            #npm audit fix --audit-level=critical
+            npm audit --audit-level=critical
+      - save_cache:
+          paths: [backend/node_modules]
+          key: scanbackend-key
       - slack/notify
 
 workflows:
