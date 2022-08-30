@@ -145,6 +145,7 @@ jobs:
       #     root: ~/
       #     paths:
       #       - project/.circleci/ansible/inventory.txt
+      
 
 workflows:
   default:
