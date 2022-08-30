@@ -205,7 +205,7 @@ jobs:
           fingerprints: ["f2:97:74:46:5b:a9:8e:d4:14:23:ed:9a:95:fd:14:28"] # Add ssh keys with fingerprint
       - attach_workspace: 
           at: ~/
-      - install_awscli
+      #- install_awscli
       - install_ansible
       - run:
           name: Configure server
